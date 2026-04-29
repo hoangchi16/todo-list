@@ -1,0 +1,19 @@
+.Home-Display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-task-input {
+  width: 300px;
+  padding: 10px;
+  border-bottom: 2px solid;
+  outline: none;
+}
+
+.create-task-button {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
