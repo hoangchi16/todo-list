@@ -7,12 +7,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/test');
+mongoose.connect('mongodb://127.0.0.1:27017/TodoTask');
 
-// app.post('/addTask', (req, res) => {
+app.post('/addTask', async (req, res) => {
+    // console.log("Attempt to add to mongodb");
+    const taskDeet = req.body.taskDeet;
+    try {
+        const result = await TaskModel.create({
+            task: taskDeet
+        });
+        res.json(result);
+    } catch (err) {
+        res.json(err);
+    }
+    
+})
 
-// })
-
-// app.listen(3001, () => {
-//     console.log("Server running")
-// })
+app.listen(3001, () => {
+    console.log("Server running")
+})

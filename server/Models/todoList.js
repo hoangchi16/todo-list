@@ -4,6 +4,6 @@ const todoSchema = new mongoose.Schema({
     task: String
 })
 
-const TaskModel = mongoose.model("todos", todoSchema)
+const TaskModel = mongoose.model("tasks", todoSchema)
 
 module.exports = TaskModel
