@@ -10,7 +10,6 @@ app.use(express.json());
 mongoose.connect('mongodb://127.0.0.1:27017/TodoTask');
 
 app.post('/addTask', async (req, res) => {
-    // console.log("Attempt to add to mongodb");
     const taskDeet = req.body.taskDeet;
     try {
         const result = await TaskModel.create({
@@ -34,7 +33,6 @@ app.get('/getTask', async(req, res) => {
 
 app.put('/updateStatus/:id', async(req, res) => {
     const {id} = req.params;
-    // console.log(id)
     try {
         const result = await TaskModel.findByIdAndUpdate({_id: id}, {done: true});
         res.json(result);
@@ -47,7 +45,6 @@ app.delete('/deleteTask/:id', async (req, res) => {
     const {id} = req.params;
     try {
         const result = await TaskModel.findByIdAndDelete({_id: id});
-        // console.log(result)
         res.json(result);
     } catch (error) {
         res.json(error);
