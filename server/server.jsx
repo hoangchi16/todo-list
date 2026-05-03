@@ -43,6 +43,17 @@ app.put('/updateStatus/:id', async(req, res) => {
     }
 })
 
+app.delete('/deleteTask/:id', async (req, res) => {
+    const {id} = req.params;
+    try {
+        const result = await TaskModel.findByIdAndDelete({_id: id});
+        // console.log(result)
+        res.json(result);
+    } catch (error) {
+        res.json(error);
+    }
+})
+
 app.listen(3001, () => {
     console.log("Server running")
 })

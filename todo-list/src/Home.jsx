@@ -28,6 +28,15 @@ function Home() {
         }
     }
 
+    async function handleDeleteTask(id) {
+        try {
+            const result = await axios.delete('http://localhost:3001/deleteTask/' + id);
+            location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div  className='Home-Display'>
             <h1>To-do List</h1>
@@ -46,7 +55,7 @@ function Home() {
                             <p className={item.done === true ? "task-text-done" : "task-text"}>{item.task}</p>
                         </div>
                         <div>
-                            <span><BsTrashFill className="task-icon"></BsTrashFill></span>
+                            <span><BsTrashFill className="task-icon" onClick={() => {handleDeleteTask(item._id)}}></BsTrashFill></span>
                         </div>
                     </div>
                 ))
