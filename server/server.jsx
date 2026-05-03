@@ -27,7 +27,16 @@ app.get('/getTask', async(req, res) => {
     try {
         const result = await TaskModel.find();
         res.json(result);
-        console.log(res)
+    } catch (error) {
+        res.json(error);
+    }
+})
+
+app.put('/updateStatus/:id', async(req, res) => {
+    const {id} = req.params;
+    // console.log(id)
+    try {
+        const result = await TaskModel.findByIdAndUpdate({_id: id}, {done: true});
     } catch (error) {
         res.json(error);
     }
