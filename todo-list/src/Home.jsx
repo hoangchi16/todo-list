@@ -12,7 +12,6 @@ function Home() {
             try {
                 const result = await axios.get('http://localhost:3001/getTask');
                 setTodos(result.data);
-                // console.log(result.data);
             } catch (error) {
                 console.log(error);
             }
@@ -20,12 +19,10 @@ function Home() {
         fetchData();
     }, [])
 
-    const handleTaskStatus = async (id) => {
+    async function handleTaskStatus(id) {
         try {
-            // console.log("Attempt to send");
             const result = await axios.put('http://localhost:3001/updateStatus/' + id);
-            // setTodos(result.data);
-            // location.reload();
+            location.reload();
         } catch (error) {
             console.log(error);
         }

@@ -37,6 +37,7 @@ app.put('/updateStatus/:id', async(req, res) => {
     // console.log(id)
     try {
         const result = await TaskModel.findByIdAndUpdate({_id: id}, {done: true});
+        res.json(result);
     } catch (error) {
         res.json(error);
     }

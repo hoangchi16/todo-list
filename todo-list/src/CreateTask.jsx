@@ -7,7 +7,7 @@ function CreateTask() {
     async function handleAddTask() {
         try {
             const result = await axios.post('http://localhost:3001/addTask', {taskDeet: task});
-            console.log(result);
+            location.reload();
         } catch (error) {
             console.log(error);
         }
