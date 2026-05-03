@@ -23,6 +23,16 @@ app.post('/addTask', async (req, res) => {
     
 })
 
+app.get('/getTask', async(req, res) => {
+    try {
+        const result = await TaskModel.find();
+        res.json(result);
+        console.log(res)
+    } catch (error) {
+        res.json(error);
+    }
+})
+
 app.listen(3001, () => {
     console.log("Server running")
 })
